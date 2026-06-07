@@ -30,13 +30,13 @@ export const Benefits = () => {
           transition={{ duration: 0.5 }}
           className="mb-20 text-center"
         >
-          <span className="mb-3 block text-xs font-medium tracking-[0.25em] uppercase text-[#fdffee]/70">
+          <span className="mb-3 block text-xs font-medium tracking-[0.25em] uppercase text-[#fdffee]/70/70">
             Why Choose Us
           </span>
           <h2 className="text-[clamp(3.5rem,10vw,10rem)] font-black leading-[0.85] tracking-[-0.04em] text-[#fdffee]">
             Benefits
           </h2>
-          <p className="mt-6 mx-auto max-w-2xl text-sm tracking-[0.15em] uppercase text-[#fdffee]/70">
+          <p className="mt-6 mx-auto max-w-2xl text-sm tracking-[0.15em] uppercase text-[#fdffee]/70/70">
             Wood cold-pressed oils are richer in nutrients
           </p>
         </motion.div>
@@ -49,12 +49,13 @@ export const Benefits = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="rounded-xl bg-[#365F37]/60 p-6"
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="rounded-xl bg-[#365F37] p-6 border border-transparent hover:border-[#fdffee]/20/20 hover:bg-[#365F37]/80 transition-colors cursor-default"
             >
               <h3 className="mb-2 text-base font-semibold text-[#fdffee]">
                 {benefit.title}
               </h3>
-              <p className="text-sm leading-relaxed text-[#fdffee]/60">
+              <p className="text-sm leading-relaxed text-[#fdffee]/60/60">
                 {benefit.description}
               </p>
             </motion.div>
@@ -64,3 +65,6 @@ export const Benefits = () => {
     </section>
   );
 };
+
+
+

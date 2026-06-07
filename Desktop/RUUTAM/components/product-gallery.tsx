@@ -68,7 +68,7 @@ export const ProductGallery = () => {
                   }}
                   className="h-full w-full overflow-hidden rounded-3xl"
                 >
-                  <div className="relative h-full w-full border border-[#fdffee]/10">
+                  <div className="relative h-full w-full border border-[#fdffee]/10/10">
                     <img
                       src={`/neoproducts/${46 + (index % 5)}.png`}
                       alt={product.name}
@@ -96,14 +96,14 @@ export const ProductGallery = () => {
           <button
               aria-label="Previous slide"
               onClick={() => api?.scrollPrev()}
-              className="absolute left-2 sm:left-6 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#fdffee]/20 p-2 sm:p-4 text-[#fdffee] transition-colors hover:bg-[#fdffee]/30"
+              className="absolute left-2 sm:left-6 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#fdffee]/20 p-2 sm:p-4 text-[#fdffee] transition-colors hover:bg-[#fdffee]/30/20 group-hover:hover:bg-[#355E3B]/30"
             >
               <ChevronLeft className="h-5 w-5 sm:h-7 sm:w-7" />
             </button>
             <button
               aria-label="Next slide"
               onClick={() => api?.scrollNext()}
-              className="absolute right-2 sm:right-6 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#fdffee]/20 p-2 sm:p-4 text-[#fdffee] transition-colors hover:bg-[#fdffee]/30"
+              className="absolute right-2 sm:right-6 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#fdffee]/20 p-2 sm:p-4 text-[#fdffee] transition-colors hover:bg-[#fdffee]/30/20 group-hover:hover:bg-[#355E3B]/30"
             >
               <ChevronRight className="h-5 w-5 sm:h-7 sm:w-7" />
             </button>
@@ -117,7 +117,7 @@ export const ProductGallery = () => {
                     "cursor-pointer rounded-full transition-all",
                     current === index
                       ? "h-3 w-8 bg-[#fdffee]"
-                      : "h-3 w-3 bg-[#fdffee]/30 hover:bg-[#fdffee]/50",
+                      : "h-3 w-3 bg-[#fdffee]/30 hover:bg-[#fdffee]/50/30",
                   )}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -127,3 +127,6 @@ export const ProductGallery = () => {
     </section>
   );
 };
+
+
+

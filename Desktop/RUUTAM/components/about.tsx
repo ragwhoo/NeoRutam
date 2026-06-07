@@ -33,13 +33,13 @@ export const About = () => {
           transition={{ duration: 0.5 }}
           className="mb-20 text-center"
         >
-          <span className="mb-3 block text-xs font-medium tracking-[0.25em] uppercase text-[#fdffee]/70">
+          <span className="mb-3 block text-xs font-medium tracking-[0.25em] uppercase text-[#fdffee]/70/70">
             Our Story
           </span>
           <h2 className="text-[clamp(3.5rem,10vw,10rem)] font-black leading-[0.85] tracking-[-0.04em] text-[#fdffee]">
             About
           </h2>
-          <p className="mt-6 mx-auto max-w-2xl text-sm tracking-[0.15em] uppercase text-[#fdffee]/70">
+          <p className="mt-6 mx-auto max-w-2xl text-sm tracking-[0.15em] uppercase text-[#fdffee]/70/70">
             {data.subtitle}
           </p>
         </motion.div>
@@ -52,7 +52,7 @@ export const About = () => {
             transition={{ duration: 0.5 }}
           >
             {paragraphs.map((p, i) => (
-              <p key={i} className="mb-4 leading-relaxed text-[#fdffee]/80">
+              <p key={i} className="mb-4 leading-relaxed text-[#fdffee]/80/80">
                 {p}
               </p>
             ))}
@@ -62,3 +62,6 @@ export const About = () => {
     </section>
   );
 };
+
+
+

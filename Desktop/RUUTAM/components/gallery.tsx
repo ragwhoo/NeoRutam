@@ -23,22 +23,22 @@ export const Gallery = () => {
   const next = () => setCurrent((c) => (c + 1) % total);
 
   return (
-    <section id="gallery" className="bg-gradient-to-b from-[#3d6b40] to-[#355E3B] px-6 py-24">
+    <section id="gallery" className="bg-gradient-to-b from-[#3d6b40] to-[#355E3B] px-6 py-32">
       <div className="max-w-5xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-20 text-center"
+          className="mb-28 text-center"
         >
-          <span className="mb-3 block text-xs font-medium tracking-[0.25em] uppercase text-[#fdffee]/70">
+          <span className="mb-6 block text-xs font-medium tracking-[0.25em] uppercase text-[#fdffee]/70/70">
             In Action
           </span>
           <h2 className="text-[clamp(3.5rem,10vw,10rem)] font-black leading-[0.85] tracking-[-0.04em] text-[#fdffee]">
             Gallery
           </h2>
-          <p className="mt-6 mx-auto max-w-2xl text-sm tracking-[0.15em] uppercase text-[#fdffee]/70">
+          <p className="mt-10 mx-auto max-w-2xl text-sm tracking-[0.15em] uppercase text-[#fdffee]/70/70">
             Watch the traditional wood-pressing process in action
           </p>
         </motion.div>
@@ -59,19 +59,19 @@ export const Gallery = () => {
           <div className="mt-6 flex items-center justify-center gap-6">
             <button
               onClick={prev}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#fdffee]/20 text-[#fdffee] transition-colors hover:bg-[#365F37]/50"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#fdffee]/20 text-[#fdffee] hover:bg-[#365F37]"
               aria-label="Previous video"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
 
-            <span className="text-sm text-[#fdffee]/60">
-              {current + 1} / {total}
-            </span>
+            <span className="text-sm text-[#fdffee]/60/60">
+                {current + 1} / {total}
+              </span>
 
             <button
               onClick={next}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#fdffee]/20 text-[#fdffee] transition-colors hover:bg-[#365F37]/50"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#fdffee]/20 text-[#fdffee] hover:bg-[#365F37]"
               aria-label="Next video"
             >
               <ChevronRight className="h-5 w-5" />
@@ -84,7 +84,7 @@ export const Gallery = () => {
                 key={i}
                 onClick={() => setCurrent(i)}
                 className={`h-2 rounded-full transition-all ${
-                  i === current ? "w-6 bg-[#fdffee]" : "w-2 bg-[#fdffee]/30"
+                  i === current ? "w-6 bg-[#fdffee]" : "w-2 bg-[#fdffee]/30/30"
                 }`}
                 aria-label={`Go to video ${i + 1}`}
               />
@@ -95,3 +95,6 @@ export const Gallery = () => {
     </section>
   );
 };
+
+
+

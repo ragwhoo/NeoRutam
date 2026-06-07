@@ -16,15 +16,17 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
+    <>
     <SmoothScroll>
-      <main>
-         <HeroVideo />
+       <main>
+          <HeroVideo />
         <About />
         <ProductGallery />
         <Benefits />
         <Gallery />
         <Contact />
-      </main>
+       </main>
+     </SmoothScroll>
 
       <button
         onClick={() => setMenuOpen(!menuOpen)}
@@ -50,6 +52,7 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
-    </SmoothScroll>
+
+    </>
   );
 }
