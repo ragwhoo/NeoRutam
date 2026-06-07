@@ -2,25 +2,40 @@
 
 import { useRef, useEffect } from "react";
 
-const TOTAL_FRAMES = 300;
+const TOTAL_FRAMES = 240;
+const PRELOAD_AHEAD = 20;
 
 const frameSrc = (i: number) =>
-  `/ezgif-frames/ezgif-frame-${String(i).padStart(3, "0")}.png`;
+  `/webpframes/frame_${String(i).padStart(3, "0")}.webp`;
 
 export const HeroVideo = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const cacheRef = useRef<HTMLImageElement[]>([]);
   const frameRef = useRef(0);
+  const loadedRef = useRef(0);
+
+  const ensureFrame = (idx: number) => {
+    const cache = cacheRef.current;
+    for (let i = Math.max(0, idx - 5); i <= Math.min(TOTAL_FRAMES - 1, idx + PRELOAD_AHEAD); i++) {
+      if (!cache[i]) {
+        const img = new Image();
+        img.src = frameSrc(i);
+        cache[i] = img;
+      }
+    }
+    loadedRef.current = Math.max(loadedRef.current, idx + PRELOAD_AHEAD);
+  };
 
   useEffect(() => {
     const cache: HTMLImageElement[] = [];
-    for (let i = 1; i <= TOTAL_FRAMES; i++) {
+    for (let i = 0; i < Math.min(30, TOTAL_FRAMES); i++) {
       const img = new Image();
       img.src = frameSrc(i);
-      cache.push(img);
+      cache[i] = img;
     }
     cacheRef.current = cache;
+    loadedRef.current = 30;
   }, []);
 
   useEffect(() => {
@@ -46,6 +61,7 @@ export const HeroVideo = () => {
     window.addEventListener("resize", resize);
 
     const draw = (idx: number) => {
+      ensureFrame(idx);
       const img = cacheRef.current[idx];
       if (!img || !img.complete || img.naturalWidth === 0) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -54,7 +70,10 @@ export const HeroVideo = () => {
 
     window.scrollTo(0, 0);
     frameRef.current = 0;
+    ensureFrame(0);
     draw(0);
+
+    let pendingFrame: number | null = null;
 
     const update = () => {
       const rect = section.getBoundingClientRect();
@@ -65,7 +84,11 @@ export const HeroVideo = () => {
       const idx = Math.round(progress * (TOTAL_FRAMES - 1));
       if (idx !== frameRef.current) {
         frameRef.current = idx;
-        draw(idx);
+        pendingFrame = idx;
+      }
+      if (pendingFrame !== null) {
+        draw(pendingFrame);
+        pendingFrame = null;
       }
       rafId = requestAnimationFrame(update);
     };
