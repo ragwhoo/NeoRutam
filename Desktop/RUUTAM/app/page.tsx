@@ -13,7 +13,7 @@ export default function Home() {
       <main>
          <HeroVideo />
          <section className="bg-[url('/green.png')] bg-cover bg-center bg-no-repeat h-screen flex items-center justify-center">
-          <div className="text-center -space-y-1">
+          <div className="text-center -space-y-4">
             <h1 className="font-display font-bold text-[13rem] text-white m-0 leading-none">Organic</h1>
             <h1 className="font-display font-bold text-[13rem] text-white">Unadultrated</h1>
             <h1 className="font-display font-bold text-[13rem] text-white">Natural</h1>
