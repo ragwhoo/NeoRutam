@@ -8,37 +8,41 @@ import { cn } from "@/lib/utils";
 const navigationItems = [
   {
     name: "Home",
-    href: "/",
+    href: "#home",
     description: "[0]",
   },
   {
-    name: "Components",
-    href: "/components",
+    name: "About",
+    href: "#about",
     description: "[1]",
   },
   {
-    name: "Pricing",
-    href: "/pricing",
+    name: "Products",
+    href: "#products",
     description: "[2]",
   },
   {
-    name: "How to use",
-    href: "/docs/quick-start",
+    name: "Benefits",
+    href: "#benefits",
     description: "[3]",
   },
   {
-    name: "Account",
-    href: "/user",
+    name: "Gallery",
+    href: "#gallery",
     description: "[4]",
   },
   {
-    name: "Login",
-    href: "/login",
-    description: "[7]",
+    name: "Contact",
+    href: "#contact",
+    description: "[5]",
   },
 ];
 
-export const Skiper58 = () => {
+interface Skiper58Props {
+  onNavigate?: () => void;
+}
+
+export const Skiper58 = ({ onNavigate }: Skiper58Props) => {
   return (
     <ul className="bs flex min-h-full w-full flex-1 flex-col items-center justify-center gap-1.5 rounded-2xl px-7 py-3 backdrop-blur-sm">
       {navigationItems.map((item, index) => (
@@ -46,14 +50,23 @@ export const Skiper58 = () => {
           className="relative flex cursor-pointer flex-col items-center overflow-visible"
           key={index}
         >
-          <div className="relative flex items-start">
-            <TextRoll
-              center
-              className="text-4xl font-extrabold uppercase leading-[0.8] tracking-[-0.03em] transition-colors lg:text-5xl"
-            >
-              {item.name}
-            </TextRoll>
-          </div>
+          <a href={item.href} onClick={(e) => {
+            e.preventDefault();
+            const el = document.querySelector(item.href);
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth" });
+              setTimeout(() => onNavigate?.(), 400);
+            }
+          }}>
+            <div className="relative flex items-start">
+              <TextRoll
+                center
+                className="text-2xl font-extrabold uppercase leading-[0.8] tracking-[-0.03em] transition-colors sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+              >
+                {item.name}
+              </TextRoll>
+            </div>
+          </a>
         </li>
       ))}
     </ul>

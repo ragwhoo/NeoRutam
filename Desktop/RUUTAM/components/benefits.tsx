@@ -21,14 +21,14 @@ export const Benefits = () => {
   if (!items.length) return null;
 
   return (
-    <section id="benefits" className="bg-[#365F37] pl-43 py-24">
-      <div className="max-w-5xl">
+    <section id="benefits" className="bg-gradient-to-b from-[#3a5e3c] to-[#3d6b40] px-6 py-24">
+      <div className="max-w-5xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-20 text-left"
+          className="mb-20 text-center"
         >
           <span className="mb-3 block text-xs font-medium tracking-[0.25em] uppercase text-[#fdffee]/70">
             Why Choose Us
@@ -36,12 +36,12 @@ export const Benefits = () => {
           <h2 className="text-[clamp(3.5rem,10vw,10rem)] font-black leading-[0.85] tracking-[-0.04em] text-[#fdffee]">
             Benefits
           </h2>
-          <p className="mt-6 max-w-2xl text-sm tracking-[0.15em] uppercase text-[#fdffee]/70">
+          <p className="mt-6 mx-auto max-w-2xl text-sm tracking-[0.15em] uppercase text-[#fdffee]/70">
             Wood cold-pressed oils are richer in nutrients
           </p>
         </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 text-center">
           {items.map((benefit, i) => (
             <motion.div
               key={benefit.title}

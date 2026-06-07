@@ -52,6 +52,8 @@ export const HeroVideo = () => {
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     };
 
+    window.scrollTo(0, 0);
+    frameRef.current = 0;
     draw(0);
 
     const update = () => {
@@ -87,7 +89,7 @@ export const HeroVideo = () => {
         <canvas ref={canvasRef} className="block h-full w-full" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/80" />
         <img src="/overlay.png" alt="" className="pointer-events-none absolute inset-0 z-10 h-full w-full object-cover" />
-        <img src="/neowruta.png" alt="RUTAM" className="pointer-events-none absolute bottom-0 right-0 z-20 h-auto w-60 md:w-80" />
+        <img src="/neowruta.png" alt="RUTAM" className="pointer-events-none absolute bottom-0 right-0 z-20 h-auto w-32 sm:w-40 md:w-60 lg:w-80" />
       </div>
     </section>
   );

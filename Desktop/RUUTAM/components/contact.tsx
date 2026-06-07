@@ -25,8 +25,8 @@ export const Contact = () => {
   const waLink = `https://wa.me/${cleanPhone.replace("+", "")}?text=Hi!%20I'm%20interested%20in%20RUTAM%20oils.`;
 
   return (
-    <section id="contact" className="bg-[#365F37] pl-43 py-24">
-      <div className="max-w-xl text-left">
+    <section id="contact" className="bg-gradient-to-b from-[#355E3B] to-[#2d4f2f] px-6 py-24">
+      <div className="w-full text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -39,7 +39,7 @@ export const Contact = () => {
           <h2 className="text-[clamp(3.5rem,10vw,10rem)] font-black leading-[0.85] tracking-[-0.04em] text-[#fdffee]">
             Contact
           </h2>
-          <p className="mt-6 max-w-lg text-sm tracking-[0.15em] uppercase text-[#fdffee]/70">
+          <p className="mt-6 mx-auto max-w-lg text-sm tracking-[0.15em] uppercase text-center text-[#fdffee]/70">
             Have questions or want to place an order? We'd love to hear from you.
           </p>
         </motion.div>
@@ -49,7 +49,7 @@ export const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="mt-10 flex flex-col items-start gap-4 sm:flex-row"
+          className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
         >
           <a
             href={waLink}
@@ -75,7 +75,7 @@ export const Contact = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 flex items-center gap-2 text-sm text-[#fdffee]/60"
+          className="mt-12 flex items-center justify-center gap-2 text-sm text-[#fdffee]/60"
         >
           <Mail className="h-4 w-4" />
           <a href={`mailto:${data.email}`} className="hover:text-[#fdffee]/90">
@@ -88,7 +88,7 @@ export const Contact = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-16 border-t border-[#fdffee]/10 pt-8 text-xs text-[#fdffee]/50"
+          className="mt-16 border-t border-[#fdffee]/10 pt-8 text-xs text-center text-[#fdffee]/50"
         >
           RUTAM Wood-Pressed Oils &mdash; by Sri Krishna Enterprises
           <br />

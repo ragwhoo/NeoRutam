@@ -24,14 +24,14 @@ export const About = () => {
   const paragraphs = data.storyText.split("\n\n").filter(Boolean);
 
   return (
-    <section id="about" className="bg-[#365F37] pl-43 py-24">
-      <div className="max-w-5xl">
+    <section id="about" className="bg-[#365d37] px-6 py-24">
+      <div className="max-w-5xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-20 text-left"
+          className="mb-20 text-center"
         >
           <span className="mb-3 block text-xs font-medium tracking-[0.25em] uppercase text-[#fdffee]/70">
             Our Story
@@ -39,15 +39,15 @@ export const About = () => {
           <h2 className="text-[clamp(3.5rem,10vw,10rem)] font-black leading-[0.85] tracking-[-0.04em] text-[#fdffee]">
             About
           </h2>
-          <p className="mt-6 max-w-2xl text-sm tracking-[0.15em] uppercase text-[#fdffee]/70">
+          <p className="mt-6 mx-auto max-w-2xl text-sm tracking-[0.15em] uppercase text-[#fdffee]/70">
             {data.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+        <div className="text-center max-w-3xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
@@ -56,23 +56,6 @@ export const About = () => {
                 {p}
               </p>
             ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="aspect-video overflow-hidden rounded-xl bg-black/20"
-          >
-            <video
-              src={`/videos/${data.videoSrc}`}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="h-full w-full object-cover"
-            />
           </motion.div>
         </div>
       </div>

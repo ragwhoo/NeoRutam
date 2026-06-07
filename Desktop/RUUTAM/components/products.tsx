@@ -23,13 +23,13 @@ export const Products = () => {
 
   return (
     <section id="products" className="bg-[#365F37] px-6 py-24 md:px-12 lg:px-20">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-20 text-left"
+          className="mb-20 text-center"
         >
           <span className="mb-3 block text-xs font-medium tracking-[0.25em] uppercase text-[#fdffee]/70">
             Pure & Natural
@@ -37,12 +37,12 @@ export const Products = () => {
           <h2 className="text-[clamp(3.5rem,10vw,10rem)] font-black leading-[0.85] tracking-[-0.04em] text-[#fdffee]">
             Our Oils
           </h2>
-          <p className="mt-6 max-w-2xl text-sm tracking-[0.15em] uppercase text-[#fdffee]/70">
+          <p className="mt-6 mx-auto max-w-2xl text-sm tracking-[0.15em] uppercase text-[#fdffee]/70">
             Wood cold-pressed using traditional Marachekku machines
           </p>
         </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 text-center">
           {items.map((product, i) => (
             <motion.div
               key={product.name}

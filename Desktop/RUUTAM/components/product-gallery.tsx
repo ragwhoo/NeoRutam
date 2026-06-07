@@ -39,8 +39,14 @@ export const ProductGallery = () => {
   if (!products.length) return null;
 
   return (
-    <section id="products" className="flex h-screen w-full flex-col bg-[#365F37]">
-      <div className="relative flex flex-1 justify-center overflow-hidden pt-20">
+    <section id="products" className="flex h-[100dvh] w-full flex-col bg-gradient-to-b from-[#365F37] to-[#3a5e3c]">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="relative flex flex-1 justify-center overflow-hidden pt-20 z-10"
+      >
         <Carousel
           setApi={setApi}
           opts={{ loop: true, slidesToScroll: 1 }}
@@ -90,16 +96,16 @@ export const ProductGallery = () => {
           <button
               aria-label="Previous slide"
               onClick={() => api?.scrollPrev()}
-              className="absolute left-6 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#fdffee]/20 p-4 text-[#fdffee] transition-colors hover:bg-[#fdffee]/30"
+              className="absolute left-2 sm:left-6 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#fdffee]/20 p-2 sm:p-4 text-[#fdffee] transition-colors hover:bg-[#fdffee]/30"
             >
-              <ChevronLeft className="h-7 w-7" />
+              <ChevronLeft className="h-5 w-5 sm:h-7 sm:w-7" />
             </button>
             <button
               aria-label="Next slide"
               onClick={() => api?.scrollNext()}
-              className="absolute right-6 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#fdffee]/20 p-4 text-[#fdffee] transition-colors hover:bg-[#fdffee]/30"
+              className="absolute right-2 sm:right-6 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#fdffee]/20 p-2 sm:p-4 text-[#fdffee] transition-colors hover:bg-[#fdffee]/30"
             >
-              <ChevronRight className="h-7 w-7" />
+              <ChevronRight className="h-5 w-5 sm:h-7 sm:w-7" />
             </button>
 
           <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 items-center gap-3">
@@ -117,7 +123,7 @@ export const ProductGallery = () => {
                 />
               ))}
             </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
