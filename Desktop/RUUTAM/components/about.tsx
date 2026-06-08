@@ -58,8 +58,8 @@ export const About = () => {
     <section
       ref={sectionRef}
       id="about"
-      className={`h-screen relative overflow-hidden transition-colors duration-[450ms] ${
-        returned ? "bg-[#365d37]" : revealed ? "bg-[#fdffee]" : "bg-[#365d37]"
+      className={`h-screen relative overflow-hidden ${
+        returned ? "bg-[#365F37]" : revealed ? "bg-[#fdffee]" : "bg-[#365F37]"
       }`}
     >
       <AnimatePresence>
@@ -85,23 +85,26 @@ export const About = () => {
         )}
       </AnimatePresence>
 
-      {revealed && !returned && (
-        <motion.div
-          className="absolute inset-0 z-30 bg-[#fdffee]"
-          initial={{ clipPath: "circle(0% at 50% 50%)" }}
-          animate={{ clipPath: "circle(200% at 50% 50%)" }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        />
-      )}
+      <AnimatePresence>
+        {revealed && !returned && (
+          <motion.div
+            className="fixed inset-0 z-[85] bg-[#fdffee]"
+            initial={{ clipPath: "circle(0% at 50% 50%)" }}
+            animate={{ clipPath: "circle(200% at 50% 50%)" }}
+            exit={{ opacity: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          />
+        )}
+      </AnimatePresence>
 
-      <div className="absolute inset-0 z-50 pointer-events-none">
+      <div className="absolute inset-0 z-[90] pointer-events-none">
         <div className="pointer-events-auto w-full h-full">
           <CoconutSplit key={resetKey} onSplit={handleSplit} />
         </div>
       </div>
 
       {revealed && (
-        <div className="absolute inset-0 z-40 flex items-center justify-center">
+        <div className="absolute inset-0 z-[95] flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
