@@ -13,7 +13,30 @@ export const About = () => {
   const [data, setData] = useState<AboutData | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [returned, setReturned] = useState(false);
+  const [resetKey, setResetKey] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const returnTimerRef = useRef<number>(0);
+  const wasOutRef = useRef(false);
+
+  useEffect(() => {
+    const checkVisibility = () => {
+      if (!sectionRef.current || !revealed) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const isOut = rect.bottom < 0 || rect.top > window.innerHeight;
+      if (isOut && !wasOutRef.current) {
+        wasOutRef.current = true;
+        window.clearTimeout(returnTimerRef.current);
+        setRevealed(false);
+        setReturned(false);
+        setResetKey((k) => k + 1);
+      } else if (!isOut) {
+        wasOutRef.current = false;
+      }
+    };
+
+    window.addEventListener("scroll", checkVisibility, { passive: true });
+    return () => window.removeEventListener("scroll", checkVisibility);
+  }, [revealed]);
 
   useEffect(() => {
     fetch("/content/about.json")
@@ -24,7 +47,7 @@ export const About = () => {
 
   const handleSplit = () => {
     setRevealed(true);
-    setTimeout(() => setReturned(true), 1500);
+    returnTimerRef.current = window.setTimeout(() => setReturned(true), 1500);
   };
 
   if (!data) return null;
@@ -73,7 +96,7 @@ export const About = () => {
 
       <div className="absolute inset-0 z-50 pointer-events-none">
         <div className="pointer-events-auto w-full h-full">
-          <CoconutSplit onSplit={handleSplit} />
+          <CoconutSplit key={resetKey} onSplit={handleSplit} />
         </div>
       </div>
 
@@ -121,3 +144,5 @@ export const About = () => {
     </section>
   );
 };
+
+
